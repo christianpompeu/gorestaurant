@@ -10,7 +10,7 @@ import { array } from "yup";
 
 import { FoodInterface } from "../../types";
 
-class Dashboard extends Component {
+class OldDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -121,4 +121,4 @@ class Dashboard extends Component {
   }
 }
 
-// export Dashboard;
+// export default OldDashboard;
