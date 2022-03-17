@@ -19,7 +19,9 @@ function Dashboard() {
         available: true,
       });
 
-
+      const updatedFoods = foods;
+      updatedFoods?.foods.push(response.data);
+      setFoods(updatedFoods);
     } catch (err) {
       console.log(err);
     }
