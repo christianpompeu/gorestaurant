@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Header from "../../components/Header";
-import ModalAddFood from "../../components/ModalAddFood";
+import ModalAddFood from "../../components/ModalAddFood/index";
 import api from "../../services/api";
 import { Food, Foods } from "../../types";
 

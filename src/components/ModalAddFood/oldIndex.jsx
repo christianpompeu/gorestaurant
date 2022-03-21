@@ -44,4 +44,4 @@ class ModalAddFood extends Component {
   }
 };
 
-export default ModalAddFood;
+// export default ModalAddFood;
