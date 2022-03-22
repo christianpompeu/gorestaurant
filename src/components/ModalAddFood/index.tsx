@@ -14,7 +14,7 @@ export default function ModalAddFood({ isOpen, setIsOpen }: ModalAddProps) {
   return (
     <>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-        <Form onSubmit={handleSubmit}>
+        <Form ref={formRef} onSubmit={handleSubmit}>
 
         </Form>
       </Modal>
