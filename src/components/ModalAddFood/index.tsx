@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import Modal from "../Modal";
 import { Form } from './styles';
 
@@ -7,7 +7,7 @@ interface ModalAddProps {
   setIsOpen: () => void;
 }
 export default function ModalAddFood({ isOpen, setIsOpen }: ModalAddProps) {
-  const formRef = useRef();
+  const formRef = useRef() as React.;
   function handleSubmit(){
     return
   }
