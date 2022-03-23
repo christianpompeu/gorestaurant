@@ -29,7 +29,7 @@ function Dashboard() {
   return (
     <>
       <Header openModal={toggleModal} />
-      <ModalAddFood isOpen={modalOpen} setIsOpen={toggleModal} />
+      <ModalAddFood isOpen={modalOpen} setIsOpen={toggleModal} handleAddFood={handleAddFood} />
     </>
   );
 }
