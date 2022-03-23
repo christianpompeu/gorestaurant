@@ -55,6 +55,14 @@
       "description": "O melhor salgado de forno que você irá comer",
       "available": true,
       "id": 7
+    },
+    {
+      "image": "https://comofazerfacil.com.br/wp-content/uploads/2014/04/como-fazer-receita-yakisoba.jpg",
+      "name": "Moda Japonesa",
+      "price": "21.90",
+      "description": "Yakisoba tradicional",
+      "available": true,
+      "id": 8
     }
   ]
 }

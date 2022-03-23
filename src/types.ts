@@ -1,5 +1,6 @@
-export interface Food {
-  id: BigInt;
+export interface FoodInterface {
+  // id: BigInt;
+  id: number;
   name: string;
   description: string;
   price: number;
@@ -8,8 +9,8 @@ export interface Food {
 }
 
 export interface Foods {
-  foods: Food[];
-  edditingFood: Food;
+  foods: FoodInterface[];
+  edditingFood: FoodInterface;
   modalOpen: boolean;
   editModalOpen: boolean;
 }
@@ -17,12 +18,12 @@ export interface Foods {
 export interface ModalAddProps {
   isOpen: boolean;
   setIsOpen: () => void;
-  handleAddFood: (food: Food) => Promise<void>;
+  handleAddFood: (food: FoodInterface) => Promise<void>;
 }
 
 export interface ModalEditProps {
   isOpen: boolean;
   setIsOpen: () => void;
-  handleUpdateFood: (food: Food) => Promise<void>;
-  editingFood: Food;
+  handleUpdateFood: (food: FoodInterface) => Promise<void>;
+  editingFood: FoodInterface;
 }

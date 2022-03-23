@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { FiCheckSquare } from "react-icons/fi";
-import { Food } from "../../types";
+import { FoodInterface } from "../../types";
 import Input from "../Input";
 import Modal from "../Modal";
 import { Form } from "./styles";
@@ -13,7 +13,7 @@ export default function ModalAddFood({
 }: ModalAddProps) {
   const formRef = useRef(null);
 
-  async function handleSubmit(data: Food) {
+  async function handleSubmit(data: FoodInterface) {
     handleAddFood(data);
     setIsOpen();
   }

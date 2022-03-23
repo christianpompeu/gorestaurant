@@ -1,8 +1,8 @@
-import { Form } from "@unform/web";
+import { Form } from "./styles";
 import { FiCheckSquare } from "react-icons/fi";
 import Input from "../Input";
 import Modal from "../Modal";
-import { ModalEditProps, Food } from "../../types";
+import { ModalEditProps, FoodInterface } from "../../types";
 import { useRef } from "react";
 
 export default function ModalEditFood({
@@ -13,7 +13,7 @@ export default function ModalEditFood({
 }: ModalEditProps) {
   const formRef = useRef(null);
 
-  function handleSubmit(data: Food) {
+  async function handleSubmit(data: FoodInterface) {
     handleUpdateFood(data);
     setIsOpen();
   }
@@ -23,10 +23,10 @@ export default function ModalEditFood({
       <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
         <Form ref={formRef} onSubmit={handleSubmit} initialData={editingFood}>
           <h1>Editar Prato</h1>
-          {/* <Input />
-          <Input />
-          <Input />
-          <Input /> */}
+          <Input name="image" placeholder="Cole o Link aqui" icon="" />
+          <Input name="name" placeholder="Ex: Moda Italiana" icon="" />
+          <Input name="price" placeholder="Ex: 19.90" icon="" />
+          <Input name="description" placeholder="Descrição" icon="" />
           <button type="submit" data-testid="edit-food-button">
             <div className="text">Editar Prato</div>
             <div className="icon">
