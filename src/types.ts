@@ -13,3 +13,16 @@ export interface Foods {
   modalOpen: boolean;
   editModalOpen: boolean;
 }
+
+export interface ModalAddProps {
+  isOpen: boolean;
+  setIsOpen: () => void;
+  handleAddFood: (food: Food) => Promise<void>;
+}
+
+export interface ModalEditProps {
+  isOpen: boolean;
+  setIsOpen: () => void;
+  handleUpdateFood: (food: Food) => Promise<void>;
+  editingFood: Food;
+}

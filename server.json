@@ -47,6 +47,14 @@
       "description": "Pizza Italiana",
       "available": true,
       "id": 6
+    },
+    {
+      "image": "linkdosalgadodacamila@gmail.com",
+      "name": "Salgado de forno top",
+      "price": "5.00",
+      "description": "O melhor salgado de forno que você irá comer",
+      "available": true,
+      "id": 7
     }
   ]
 }

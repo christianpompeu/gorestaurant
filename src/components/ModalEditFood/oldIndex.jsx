@@ -45,4 +45,4 @@ class ModalEditFood extends Component {
   }
 };
 
-export default ModalEditFood;
+// export default ModalEditFood;
