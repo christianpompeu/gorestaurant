@@ -4,24 +4,37 @@ import Header from "../../components/Header";
 import ModalAddFood from "../../components/ModalAddFood/index";
 import ModalEditFood from "../../components/ModalEditFood";
 import api from "../../services/api";
-import { FoodInterface, Foods } from "../../types";
+import { FoodInterface, FoodMenu } from "../../types";
 import { FoodsContainer } from "./styles";
 
 function Dashboard() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
-  const [foods, setFoods] = useState<Foods>();
+  const [foodMenu, setFoodMenu] = useState<FoodMenu>();
+  const [foods, setFoods] = useState<FoodInterface[]>([]);
 
   useEffect(() => {
     async function loadFoods() {
       const response = await api.get("/foods");
-      const updatedFoods = foods;
-      updatedFoods?.foods.push(response.data);
-      setFoods(updatedFoods);
+      const loadedFoods = response.data;
+      setFoods(loadedFoods);
     }
     loadFoods();
-    console.log(foods);
   }, []);
+
+  console.log(foods);
+
+  useEffect(() => {
+    const newFoodMenu = {
+      foods: foods,
+      edditingFood: {},
+      modalOpen: false,
+      editModalOpen: false,
+    }
+    setFoodMenu(newFoodMenu as FoodMenu);
+  }, [foods]);
+
+  console.log(foodMenu);
 
   function toggleModal() {
     setModalOpen(!modalOpen);
@@ -38,9 +51,9 @@ function Dashboard() {
         available: true,
       });
 
-      const updatedFoods = foods;
+      const updatedFoods = foodMenu;
       updatedFoods?.foods.push(response.data);
-      setFoods(updatedFoods);
+      setFoodMenu(updatedFoods);
     } catch (err) {
       console.log(err);
     }
@@ -48,17 +61,17 @@ function Dashboard() {
 
   async function handleUpdateFood(food: FoodInterface) {
     try {
-      const foodUpdated = await api.put(`/foods/${foods?.edditingFood.id}`, {
-        ...foods?.edditingFood,
+      const foodUpdated = await api.put(`/foods/${foodMenu?.edditingFood.id}`, {
+        ...foodMenu?.edditingFood,
         ...food,
       });
 
-      const updatedFoods = foods;
+      const updatedFoods = foodMenu;
       const foodsUpdated = updatedFoods?.foods.map((f) =>
         f.id !== foodUpdated.data.id ? f : foodUpdated.data
       );
       updatedFoods!.foods = foodsUpdated as FoodInterface[];
-      setFoods(updatedFoods);
+      setFoodMenu(updatedFoods);
     } catch (err) {
       console.log(err);
     }
@@ -75,7 +88,7 @@ function Dashboard() {
   return (
     <>
       <Header openModal={toggleModal} />
-      <ModalAddFood
+      {/* <ModalAddFood
         isOpen={modalOpen}
         setIsOpen={toggleModal}
         handleAddFood={handleAddFood}
@@ -84,11 +97,11 @@ function Dashboard() {
         isOpen={editModalOpen}
         setIsOpen={toggleEditModal}
         handleUpdateFood={handleUpdateFood}
-        editingFood={foods?.edditingFood as FoodInterface}
-      />
+        editingFood={foodMenu?.edditingFood as FoodInterface}
+      /> */}
       <FoodsContainer data-testid="foods-list">
-        {foods?.foods &&
-          foods?.foods.map((food) => (
+        {foodMenu?.foods &&
+          foodMenu?.foods.map((food) => (
             <Food
               key={food.id}
               food={food}

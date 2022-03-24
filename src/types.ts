@@ -8,7 +8,7 @@ export interface FoodInterface {
   image: string;
 }
 
-export interface Foods {
+export interface FoodMenu {
   foods: FoodInterface[];
   edditingFood: FoodInterface;
   modalOpen: boolean;
