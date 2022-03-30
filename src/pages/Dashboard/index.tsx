@@ -75,7 +75,7 @@ function Dashboard() {
     }
   }
 
-  function handleDeleteFood() {
+  function handleDeleteFood(foodId:number) {
     return;
   }
 
@@ -89,7 +89,7 @@ function Dashboard() {
   return (
     <>
       <Header openModal={toggleModal} />
-      {/* <ModalAddFood
+      <ModalAddFood
         isOpen={modalOpen}
         setIsOpen={toggleModal}
         handleAddFood={handleAddFood}
@@ -99,14 +99,14 @@ function Dashboard() {
         setIsOpen={toggleEditModal}
         handleUpdateFood={handleUpdateFood}
         editingFood={foodMenu?.edditingFood as FoodInterface}
-      /> */}
+      />
       <FoodsContainer data-testid="foods-list">
         {foodMenu?.foods &&
           foodMenu?.foods.map((food) => (
             <Food
               key={food.id}
               food={food}
-              // handleDelete={handleDeleteFood}
+              handleDelete={handleDeleteFood}
               handleEditFood={handleEditFood}
             />
           ))}
