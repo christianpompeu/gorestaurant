@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Food from "../../components/Food";
+import Food from "../../components/Food/index";
 import Header from "../../components/Header";
 import ModalAddFood from "../../components/ModalAddFood/index";
 import ModalEditFood from "../../components/ModalEditFood";
@@ -22,15 +22,13 @@ function Dashboard() {
     loadFoods();
   }, []);
 
-  console.log(foods);
-
   useEffect(() => {
     const newFoodMenu = {
       foods: foods,
       edditingFood: {},
       modalOpen: false,
       editModalOpen: false,
-    }
+    };
     setFoodMenu(newFoodMenu as FoodMenu);
   }, [foods]);
 
@@ -81,8 +79,11 @@ function Dashboard() {
     return;
   }
 
-  function handleEditFood() {
-    return;
+  function handleEditFood(food: FoodInterface) {
+    const editedFoodMenu = foodMenu;
+    editedFoodMenu!.edditingFood = food;
+    editedFoodMenu!.editModalOpen = true;
+    setFoodMenu(editedFoodMenu);
   }
 
   return (
@@ -105,7 +106,7 @@ function Dashboard() {
             <Food
               key={food.id}
               food={food}
-              handleDelete={handleDeleteFood}
+              // handleDelete={handleDeleteFood}
               handleEditFood={handleEditFood}
             />
           ))}

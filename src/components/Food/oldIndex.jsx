@@ -89,4 +89,4 @@ class Food extends Component {
   }
 };
 
-export default Food;
+// export default Food;
