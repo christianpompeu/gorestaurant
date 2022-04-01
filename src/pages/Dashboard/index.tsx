@@ -75,14 +75,20 @@ function Dashboard() {
     }
   }
 
-  function handleDeleteFood(foodId:number) {
-    return;
+  async function handleDeleteFood(foodId: number) {
+    await api.delete(`/foods/${foodId}`);
+    const updatedFoods = foods.filter((food) => food.id !== foodId);
+    setFoods(updatedFoods);
+    const updatedFoodMenu = foodMenu;
+    updatedFoodMenu!.foods = updatedFoods;
+    setFoodMenu(updatedFoodMenu);
   }
 
   function handleEditFood(food: FoodInterface) {
     const editedFoodMenu = foodMenu;
     editedFoodMenu!.edditingFood = food;
     editedFoodMenu!.editModalOpen = true;
+    setEditModalOpen(editedFoodMenu!.editModalOpen);
     setFoodMenu(editedFoodMenu);
   }
 

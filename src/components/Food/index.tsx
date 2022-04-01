@@ -32,6 +32,7 @@ export default function Food({
   }
 
   function setEditingFood() {
+    console.log(food);
     handleEditFood(food);
   }
 
@@ -61,7 +62,7 @@ export default function Food({
             type="button"
             className="icon"
             onClick={() => handleDelete(food.id)}
-            data-testid={`edit-food-${food.id}`}
+            data-testid={`remove-food-${food.id}`}
           >
             <FiTrash size={20} />
           </button>
