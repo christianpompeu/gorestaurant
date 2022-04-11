@@ -7,6 +7,14 @@
       "price": "25.90",
       "available": true,
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png"
+    },
+    {
+      "image": "",
+      "name": "Comida",
+      "price": "19,90",
+      "description": "Comida",
+      "available": true,
+      "id": 4
     }
   ]
 }
