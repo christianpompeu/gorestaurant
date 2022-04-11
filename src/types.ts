@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 export interface FoodInterface {
   // id: BigInt;
   id: number;
@@ -28,10 +26,4 @@ export interface ModalEditProps {
   setIsOpen: () => void;
   handleUpdateFood: (food: FoodInterface) => Promise<void>;
   editingFood: FoodInterface;
-}
-
-export interface ModalProps{
-  isOpen: boolean;
-  setIsOpen: ()=>void;
-  children: ReactNode
 }

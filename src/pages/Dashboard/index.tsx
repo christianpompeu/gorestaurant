@@ -32,8 +32,6 @@ function Dashboard() {
     setFoodMenu(newFoodMenu as FoodMenu);
   }, [foods]);
 
-  console.log(foodMenu);
-
   function toggleModal() {
     setModalOpen(!modalOpen);
   }
@@ -48,10 +46,11 @@ function Dashboard() {
         ...food,
         available: true,
       });
+      setFoods([...foods, response.data]);
 
-      const updatedFoods = foodMenu;
-      updatedFoods?.foods.push(response.data);
-      setFoodMenu(updatedFoods);
+      const updatedFoodMenu = foodMenu;
+      updatedFoodMenu!.foods = foods;
+      setFoodMenu(updatedFoodMenu);
     } catch (err) {
       console.log(err);
     }
@@ -64,12 +63,17 @@ function Dashboard() {
         ...food,
       });
 
-      const updatedFoods = foodMenu;
-      const foodsUpdated = updatedFoods?.foods.map((f) =>
-        f.id !== foodUpdated.data.id ? f : foodUpdated.data
+      // const foodsUpdated = foods.map((f) =>
+      //   f.id !== foodUpdated.data.id ? f : foodUpdated.data
+      // );
+      // setFoods(foodsUpdated);
+      setFoods(
+        foods.map((f) => (f.id !== foodUpdated.data.id ? f : foodUpdated.data))
       );
-      updatedFoods!.foods = foodsUpdated as FoodInterface[];
-      setFoodMenu(updatedFoods);
+
+      const updatedFoodMenu = foodMenu;
+      updatedFoodMenu!.foods = foods;
+      setFoodMenu(updatedFoodMenu);
     } catch (err) {
       console.log(err);
     }
@@ -107,8 +111,8 @@ function Dashboard() {
         editingFood={foodMenu?.edditingFood as FoodInterface}
       />
       <FoodsContainer data-testid="foods-list">
-        {foodMenu?.foods &&
-          foodMenu?.foods.map((food) => (
+        {foods &&
+          foods.map((food) => (
             <Food
               key={food.id}
               food={food}
